@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Bubblegum Sans', cursive;
+	}
+}
+
+.btn-container {
+	@apply w-[100px] h-[50px] font-bold bg-aqua relative cursor-pointer drop-shadow-[5px_5px_0_rgba(0,0,0,1)] transition duration-[0.3s] flex justify-center items-center min-h-[20px] after:top-0 after:left-0 after:w-[100px] after:h-[50px] after:bg-gradient-to-r after:from-aqua after:to-salmonBerry after:opacity-0 after:transition after:duration-[0.3s] hover:drop-shadow-[-5px_-5px_0_rgba(0,0,0,1)] hover:scale-[0.9] hover:after:opacity-[1];
+}
+
+.btn {
+	@apply absolute no-underline z-10 w-full h-full;
+}
