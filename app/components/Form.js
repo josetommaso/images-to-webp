@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import Dropdzone from './Dropdzone';
+import Loading from './Loading';
 
 const Form = () => {
 	const [zipFile, setZipFile] = useState(null);
 	const [images, setImages] = useState([]);
 	const [disableConvertButton, setDisableConvertButton] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const submitImages = async (e) => {
 		e.preventDefault();
@@ -19,7 +21,8 @@ const Form = () => {
 
 		try {
 			setDisableConvertButton(true);
-			const response = await fetch('https://13.51.205.5:4000/upload', {
+			setLoading(true);
+			const response = await fetch('https://api.img2webp.pp.ua/upload', {
 				method: 'POST',
 				body: formData,
 			});
@@ -36,11 +39,14 @@ const Form = () => {
 			console.error('Error uploading images:', error.message);
 		}
 
+		setLoading(false);
 		setDisableConvertButton(false);
 	};
 
 	return (
-		<form className="max-w-xl w-full bg-white p-4 text-center rounded-md">
+		<form className="max-w-xl w-full bg-white p-4 text-center rounded-md relative overflow-hidden">
+			{loading && <Loading />}
+
 			<h1 className="bg-fuchsia-500 text-aqua text-3xl font-bold p-1 pb-3 border-[3px] border-black rounded-sm">
 				Convert your images to webp
 			</h1>
