@@ -8,6 +8,7 @@ const Dropdzone = ({
 	images,
 	setImages,
 	zipFile,
+	setZipFile,
 	disableConvertButton,
 	submitImages,
 }) => {
@@ -35,10 +36,18 @@ const Dropdzone = ({
 		}
 	};
 
+	const removeDownloadbutton = () => {
+		setZipFile(false);
+	};
+
 	const handleThumbnailClick = (index) => {
 		const updatedImages = [...images]; // Create a copy of the images state
 		updatedImages.splice(index, 1); // Remove the image at the specified index
 		setImages(updatedImages); // Update the images state with the modified array
+
+		if (images.length - 1 === 0) {
+			removeDownloadbutton();
+		}
 	};
 
 	return (
