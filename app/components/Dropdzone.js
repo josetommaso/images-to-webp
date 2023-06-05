@@ -23,6 +23,7 @@ const Dropdzone = ({
 			'image/jpeg': [],
 			'image/png': [],
 		},
+		maxFiles: 30,
 		onDrop,
 	});
 
