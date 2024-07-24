@@ -22,7 +22,7 @@ const Form = () => {
 		try {
 			setDisableConvertButton(true);
 			setLoading(true);
-			const response = await fetch('https://api.img2webp.pp.ua/upload', {
+			const response = await fetch('https://images-to-webp.vercel.app/upload', {
 				method: 'POST',
 				body: formData,
 			});
